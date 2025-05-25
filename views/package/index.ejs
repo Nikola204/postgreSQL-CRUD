@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paketi</title>
+</head>
+<body>
+  <h1>Popis paketa</h1>
+  <a href="/package/new">Dodaj novi paket</a>
+  <ul>
+    <% packages.forEach(p => { %>
+      <li>
+        <strong><%= p.name %></strong><br>
+        Opis: <%= p.description %><br>
+        Popust: <%= p.price_discount %> €<br>
+        Trajanje: <%= p.duration %> dana<br>
+        <a href="/package/edit/<%= p.id %>">Uredi</a>
+        <form action="/package/delete/<%= p.id %>" method="POST" style="display:inline;">
+          <button type="submit">Obriši</button>
+        </form>
+        <hr>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dodaj instruktora</title></head>
+<body>
+  <h1>Dodaj instruktora na tečaj</h1>
+  <form action="/course-instructors" method="POST">
+    <label>Instruktor:</label>
+    <select name="user_id" required>
+      <% users.forEach(user => { %>
+        <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Tečaj:</label>
+    <select name="course_id" required>
+      <% courses.forEach(course => { %>
+        <option value="<%= course.id %>"><%= course.name %></option>
+      <% }) %>
+    </select><br>
+
+    <button type="submit">Dodaj</button>
+  </form>
+</body>
+</html>

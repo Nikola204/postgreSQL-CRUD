@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Content</title>
+</head>
+<body>
+  <h1>Popis sadržaja</h1>
+  <a href="/content/new">Dodaj novi sadržaj</a>
+  <ul>
+    <% contents.forEach(c => { %>
+      <li>
+        <strong><%= c.video %></strong><br>
+        Opis: <%= c.description %><br>
+        Tečaj: <%= c.course_name %><br>
+        <a href="/content/edit/<%= c.id %>">Uredi</a>
+        <form action="/content/delete/<%= c.id %>" method="POST" style="display:inline;">
+          <button type="submit">Obriši</button>
+        </form>
+        <hr>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

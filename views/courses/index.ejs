@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tečajevi</title>
+</head>
+<body>
+  <h1>Popis tečajeva</h1>
+  <a href="/courses/new">Dodaj novi tečaj</a>
+  <ul>
+    <% courses.forEach(course => { %>
+      <li>
+        <strong><%= course.name %></strong> -
+        Trajanje: <%= course.duration %> dana -
+        Razina: <%= course.level %> -
+        Cijena: <%= course.price %> €
+        <a href="/courses/edit/<%= course.id %>">Uredi</a>
+        <form action="/courses/delete/<%= course.id %>" method="POST" style="display:inline;">
+          <button type="submit">Obriši</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

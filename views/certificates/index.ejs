@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Certifikati</title></head>
+<body>
+  <h1>Certifikati</h1>
+  <a href="/certificates/new">Dodaj certifikat</a>
+  <ul>
+    <% certificates.forEach(cert => { %>
+      <li>
+        <strong><%= cert.first_name %> <%= cert.last_name %></strong><br>
+        Tečaj: <%= cert.course_name %><br>
+        Izdano: <%= cert.issue_date.toISOString().split('T')[0] %><br>
+        <form action="/certificates/delete/<%= cert.id %>" method="POST">
+          <button type="submit">Obriši</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

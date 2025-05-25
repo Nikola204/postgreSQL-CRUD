@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dodaj korisnički paket</title></head>
+<body>
+  <h1>Dodaj korisniku paket</h1>
+  <form action="/users-packages" method="POST">
+    <label>Korisnik:</label>
+    <select name="user_id" required>
+      <% users.forEach(user => { %>
+        <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Paket:</label>
+    <select name="package_id" required>
+      <% packages.forEach(pkg => { %>
+        <option value="<%= pkg.id %>"><%= pkg.name %> (trajanje: <%= pkg.duration %> dana)</option>
+      <% }) %>
+    </select><br>
+
+    <label>Datum uzimanja:</label>
+    <input type="date" name="date" required><br>
+
+    <button type="submit">Dodaj</button>
+  </form>
+</body>
+</html>

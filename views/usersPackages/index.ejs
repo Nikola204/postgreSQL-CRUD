@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Korisnički paketi</title></head>
+<body>
+  <h1>Korisnički paketi</h1>
+  <a href="/users-packages/new">Dodaj korisniku paket</a>
+  <ul>
+    <% usersPackages.forEach(up => { %>
+      <li>
+        <strong><%= up.first_name %> <%= up.last_name %></strong><br>
+        Paket: <%= up.package_name %><br>
+        Datum uzimanja: <%= up.date.toISOString().split('T')[0] %><br>
+        Ističe: <%= up.expiry_date.toISOString().split('T')[0] %><br>
+        <form action="/users-packages/delete/<%= up.user_id %>/<%= up.package_id %>" method="POST">
+          <button type="submit">Obriši</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

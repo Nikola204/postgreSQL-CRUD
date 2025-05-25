@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Instruktori</title></head>
+<body>
+  <h1>Instruktori po tečajevima</h1>
+  <a href="/course-instructors/new">Dodaj instruktora</a>
+  <ul>
+    <% instructors.forEach(inst => { %>
+      <li>
+        <strong><%= inst.first_name %> <%= inst.last_name %></strong> - <%= inst.course_name %>
+        <form action="/course-instructors/delete" method="POST" style="display:inline;">
+          <input type="hidden" name="user_id" value="<%= inst.user_id %>">
+          <input type="hidden" name="course_id" value="<%= inst.course_id %>">
+          <button type="submit">Obriši</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

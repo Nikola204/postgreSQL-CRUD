@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Korisnici tečajeva</title></head>
+<body>
+  <h1>Korisnici tečajeva</h1>
+  <a href="/course-users/new">Dodaj korisnika na tečaj</a>
+  <ul>
+    <% courseUsers.forEach(cu => { %>
+      <li>
+        <strong><%= cu.first_name %> <%= cu.last_name %></strong><br>
+        Tečaj: <%= cu.course_name %><br>
+        Upisan: <%= cu.enrolled_at.toISOString().split('T')[0] %><br>
+        Status: <%= cu.status %><br>
+        Napredak: <%= cu.progress %> %<br>
+        Komentar: <%= cu.comment %><br>
+        <form action="/course-users/delete/<%= cu.user_id %>/<%= cu.course_id %>" method="POST">
+          <button type="submit">Obriši</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

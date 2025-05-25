@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Uredi sadržaj</title>
+</head>
+<body>
+  <h1>Uredi sadržaj</h1>
+  <form action="/content/edit/<%= content.id %>" method="POST">
+    <input type="text" name="video" value="<%= content.video %>" required><br>
+    <textarea name="description" required><%= content.description %></textarea><br>
+    <select name="course_id" required>
+      <% courses.forEach(course => { %>
+        <option value="<%= course.id %>" <%= course.id === content.course_id ? 'selected' : '' %>>
+          <%= course.name %>
+        </option>
+      <% }) %>
+    </select><br>
+    <button type="submit">Spremi promjene</button>
+  </form>
+</body>
+</html>

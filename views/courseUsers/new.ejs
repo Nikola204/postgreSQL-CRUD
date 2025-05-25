@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dodaj korisnika na tečaj</title></head>
+<body>
+  <h1>Dodaj korisnika na tečaj</h1>
+  <form action="/course-users" method="POST">
+    <label>Korisnik:</label>
+    <select name="user_id" required>
+      <% users.forEach(user => { %>
+        <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Tečaj:</label>
+    <select name="course_id" required>
+      <% courses.forEach(course => { %>
+        <option value="<%= course.id %>"><%= course.name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Datum upisa:</label>
+    <input type="date" name="enrolled_at" required><br>
+
+    <label>Status:</label>
+    <select name="status" required>
+      <option value="in progress">In Progress</option>
+      <option value="completed">Completed</option>
+      <option value="dropped">Dropped</option>
+    </select><br>
+
+    <label>Napredak (%):</label>
+    <input type="number" name="progress" min="0" max="100" required><br>
+
+    <label>Komentar:</label>
+    <textarea name="comment"></textarea><br>
+
+    <button type="submit">Dodaj</button>
+  </form>
+</body>
+</html>

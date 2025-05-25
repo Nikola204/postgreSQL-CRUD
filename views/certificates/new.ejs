@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dodaj certifikat</title></head>
+<body>
+  <h1>Dodaj certifikat</h1>
+  <form action="/certificates" method="POST">
+    <label>Korisnik:</label>
+    <select name="user_id" required>
+      <% users.forEach(user => { %>
+        <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Tečaj:</label>
+    <select name="course_id" required>
+      <% courses.forEach(course => { %>
+        <option value="<%= course.id %>"><%= course.name %></option>
+      <% }) %>
+    </select><br>
+
+    <label>Datum izdavanja:</label>
+    <input type="date" name="issue_date" required><br>
+
+    <button type="submit">Dodaj certifikat</button>
+  </form>
+</body>
+</html>

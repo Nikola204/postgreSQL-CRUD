@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Novi tečaj</title>
+</head>
+<body>
+  <h1>Dodaj novi tečaj</h1>
+  <form action="/courses" method="POST">
+    <input type="text" name="name" placeholder="Naziv" required><br>
+    <input type="number" name="duration" placeholder="Trajanje (u danima)" required><br>
+    <input type="text" name="level" placeholder="Razina (beginner, intermediate, advanced)" required><br>
+    <input type="number" name="price" placeholder="Cijena" required><br>
+    <button type="submit">Dodaj</button>
+  </form>
+</body>
+</html>

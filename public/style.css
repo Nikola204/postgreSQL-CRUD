@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  margin: 30px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input, select {
+  margin: 5px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px 10px;
+}

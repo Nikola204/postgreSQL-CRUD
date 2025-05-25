@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Korisnici</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Korisnici</h1>
+
+  <!-- Forma za dodavanje korisnika -->
+  <form action="/users/add" method="POST">
+    <input type="text" name="first_name" placeholder="Ime" required>
+    <input type="text" name="last_name" placeholder="Prezime" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Lozinka" required>
+    <select name="role" required>
+      <option value="student">Student</option>
+      <option value="instruktor">Instruktor</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button type="submit">Dodaj korisnika</button>
+  </form>
+
+  <hr>
+
+  <!-- Tablica korisnika -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Email</th>
+        <th>Uloga</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <!-- Uredi korisnika -->
+            <form action="/users/edit/<%= user.id %>" method="POST" style="display:inline-block;">
+              <input type="text" name="first_name" value="<%= user.first_name %>" required>
+              <input type="text" name="last_name" value="<%= user.last_name %>" required>
+              <input type="email" name="email" value="<%= user.email %>" required>
+              <input type="text" name="password" placeholder="Nova lozinka" required>
+              <select name="role" required>
+                <option value="student" <%= user.role === 'student' ? 'selected' : '' %>>Student</option>
+                <option value="instruktor" <%= user.role === 'instruktor' ? 'selected' : '' %>>Instruktor</option>
+                <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+              </select>
+              <button type="submit">Spremi</button>
+            </form>
+
+            <!-- Obriši korisnika -->
+            <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline-block;">
+              <button type="submit" onclick="return confirm('Jesi siguran da želiš obrisati korisnika?')">Obriši</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

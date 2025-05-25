@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Novi sadržaj</title>
+</head>
+<body>
+  <h1>Dodaj novi sadržaj</h1>
+  <form action="/content" method="POST">
+    <input type="text" name="video" placeholder="Video link ili naziv" required><br>
+    <textarea name="description" placeholder="Opis" required></textarea><br>
+    <select name="course_id" required>
+      <% courses.forEach(course => { %>
+        <option value="<%= course.id %>"><%= course.name %></option>
+      <% }) %>
+    </select><br>
+    <button type="submit">Spremi</button>
+  </form>
+</body>
+</html>
